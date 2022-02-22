@@ -1,0 +1,47 @@
+server:
+  port: ${PORT:5001}
+spring:
+  datasource:
+    url: ${JDBC_DATABASE_URL}
+    username: ${JDBC_DATABASE_USERNAME}
+    password: ${JDBC_DATABASE_PASSWORD}
+  redis:
+    url: ${REDIS_URL}
+    lettuce:
+      pool:
+        enabled: true
+  jpa:
+    show-sql: ${LOG_SQL:false}
+    properties:
+      hibernate:
+        jdbc:
+          '[time_zone]': UTC
+  flyway:
+    enabled: false
+logging:
+  level:
+    '[org.hibernate.type.descriptor.sql]': ${LOG_SQL_BIND_VARS:INFO}
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+webdriver:
+  enable: true
+  timeout: ${WEBDRIVER_TIMEOUT:10}
+  wait: ${WEBDRIVER_WAIT:10}
+  application:
+    name: ${WEBDRIVER_APPLICATION_NAME:FootyStats}
+    version: ${WEBDRIVER_APPLICATION_VERSION:1.0}
+  user-agent: ${WEBDRIVER_USER_AGENT:FootyStats/1.0 Stat Retriever}
+  use-proxy: ${WEBDRIVER_USE_PROXY:false}
+  proxy-url: ${FIXIE_URL:http://user:pass@127.0.0.1:8080}
+aflstats:
+  year: ${YEAR:2020}
+  base-stats-url: ${AFL_BASE_STATS_URL:https://www.foxsports.com.au/afl/match-centre}
+org:
+  jobrunr:
+    background-job-server:
+      enabled: true
+    database:
+      skip-create: true

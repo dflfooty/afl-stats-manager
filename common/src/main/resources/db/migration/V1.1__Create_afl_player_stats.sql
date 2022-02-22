@@ -1,0 +1,20 @@
+create table afl_player_stats (
+    id SERIAL PRIMARY KEY NOT NULL,
+    round INTEGER,
+    name VARCHAR,
+    team VARCHAR(4),
+    jumper_no INTEGER,
+    kicks INTEGER,
+    handballs INTEGER,
+    disposals INTEGER,
+    marks INTEGER,
+    hitouts INTEGER,
+    frees_for INTEGER,
+    frees_against INTEGER,
+    tackles INTEGER,
+    goals INTEGER,
+    behinds INTEGER,
+    fixture_id INTEGER REFERENCES afl_fixtures,
+    created_at TIMESTAMP,
+    updated_at TIMESTAMP
+);
