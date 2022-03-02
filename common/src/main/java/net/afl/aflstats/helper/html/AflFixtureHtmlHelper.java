@@ -48,7 +48,9 @@ public class AflFixtureHtmlHelper {
             try {
                 long unixDateTime = Long.parseLong(fixtureRow.findElement(By.className("match-scheduled__time")).getAttribute("data-date"));
                 fixture.startTime = LocalDateTime.ofInstant(Instant.ofEpochMilli(unixDateTime), ZoneId.systemDefault());
-            } catch (NumberFormatException e) {}
+            } catch (NumberFormatException e) {
+                log.info("Game start time TBD");
+            }
             
             String ground = fixtureRow.findElement(By.className("match-scheduled__venue")).getText().replaceAll("[^a-zA-Z0-9]", "");
             fixture.ground = ground;
