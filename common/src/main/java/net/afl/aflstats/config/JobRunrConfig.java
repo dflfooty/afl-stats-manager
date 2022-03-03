@@ -37,7 +37,7 @@ public class JobRunrConfig {
         poolConfig.setMinIdle(this.poolMinIdle);
         poolConfig.setMinEvictableIdleTime(this.poolEvictionTime);
 
-        GenericObjectPool<StatefulRedisConnection<String, String>> pool = ConnectionPoolSupport.createGenericObjectPool(() -> redisClient.connect(), poolConfig);
+        GenericObjectPool<StatefulRedisConnection<String, String>> pool = ConnectionPoolSupport.createGenericObjectPool(redisClient::connect, poolConfig);
 
         LettuceRedisStorageProvider lettuceRedisStorageProvider = new LettuceRedisStorageProvider(pool, properties.getDatabase().getTablePrefix());
         lettuceRedisStorageProvider.setJobMapper(jobMapper);
