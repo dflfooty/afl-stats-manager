@@ -12,4 +12,4 @@ COPY --from=build_step /build/web/target/afl-stats-manager-web.jar \
                        /build/scheduler/target/afl-stats-manager-scheduler.jar \
                        /app/
 WORKDIR /app
-CMD start.sh
+CMD ./start.sh
