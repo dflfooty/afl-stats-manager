@@ -1,6 +1,6 @@
 package net.afl.aflstats.helper.html.webdriver;
 
-import java.util.concurrent.TimeUnit;
+import java.time.Duration;
 
 import com.gargoylesoftware.htmlunit.BrowserVersion;
 import com.gargoylesoftware.htmlunit.ProxyConfig;
@@ -67,8 +67,8 @@ public class ScrapperWebDriver {
             };
         }
 
-        driver.manage().timeouts().implicitlyWait(webdriverProperties.getWait(), TimeUnit.SECONDS);
-        driver.manage().timeouts().pageLoadTimeout(webdriverProperties.getTimeout(), TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(webdriverProperties.getWait()));
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(webdriverProperties.getTimeout()));
 
         return driver;
     }
