@@ -5,12 +5,15 @@ WORKDIR /build
 RUN mvn clean package -DskipTests
 
 FROM eclipse-temurin:17-jdk-focal
-RUN mkdir /app
+RUN mkdir /app &&
+    mkdir /app/lib
 COPY start.sh /app/
 COPY --from=build_step /build/web/target/afl-stats-manager-web.jar \
                        /build/worker/target/afl-stats-manager-worker.jar \
                        /build/scheduler/target/afl-stats-manager-scheduler.jar \
                        /build/common/target/afl-stats-manager-common.jar \
                        /app/
+COPY --from=build_step /build/common/target/dependency/*.jar \
+                       /app/lib/
 WORKDIR /app
 CMD ./start.sh
