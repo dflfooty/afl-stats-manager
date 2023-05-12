@@ -10,6 +10,7 @@ COPY start.sh /app/
 COPY --from=build_step /build/web/target/afl-stats-manager-web.jar \
                        /build/worker/target/afl-stats-manager-worker.jar \
                        /build/scheduler/target/afl-stats-manager-scheduler.jar \
+                       /build/common/target/afl-stats-manager-common.jar \
                        /app/
 WORKDIR /app
 CMD ./start.sh
