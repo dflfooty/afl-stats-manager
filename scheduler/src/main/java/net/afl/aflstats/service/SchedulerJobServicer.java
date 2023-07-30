@@ -31,7 +31,7 @@ public class SchedulerJobServicer {
     public void scheduleFixtureScapper() {
         log.info("SchedulerJobServicer scheduleFixtureScapper: Scheduling fixture scrapper");
 
-        jobScheduler.enqueue(() -> aflFixtureJobService.run());
+        jobScheduler.enqueue(aflFixtureJobService::run);
 
         log.info("SchedulerJobServicer scheduleFixtureScapper: Job enqueued");
     }
@@ -100,7 +100,7 @@ public class SchedulerJobServicer {
         }
     }
 
-    @Recurring(id = "schedule-5pm-stats-scrape", cron = "0 23 * * *", zoneId = "Australia/Melbourne")
+    @Recurring(id = "schedule-11pm-stats-scrape", cron = "0 23 * * *", zoneId = "Australia/Melbourne")
     @Job(name = "Schedule 5pm Stats Scrape")
     public void schedule11pmStatsScrape() {
         log.info("SchedulerJobServicer schedule11pmStatsScrape: Scheduling 5pm fixture scrapper");

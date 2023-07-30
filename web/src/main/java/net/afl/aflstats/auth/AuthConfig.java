@@ -31,7 +31,7 @@ public class AuthConfig {
             .exceptionHandling()
             .and()
             .addFilterBefore(new AuthFilter(authManager()), AnonymousAuthenticationFilter.class)
-            .authorizeRequests()
+            .authorizeHttpRequests()
             .anyRequest()
             .authenticated()
             .and()

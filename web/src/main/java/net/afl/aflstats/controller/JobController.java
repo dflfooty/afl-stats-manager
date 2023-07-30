@@ -36,7 +36,7 @@ public class JobController {
 
     @PostMapping(value = "/fixtures", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> enqueueFixturesJob() {
-        jobScheduler.enqueue(() -> aflFixtureJobService.run());
+        jobScheduler.enqueue(aflFixtureJobService::run);
 
         log.info("Afl fixture job submitted");
 

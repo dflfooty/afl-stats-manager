@@ -81,6 +81,8 @@ public class ScrapperWebDriver {
         chromeOptions.addArguments("--no-sandbox");
         chromeOptions.addArguments("--disable-gpu");
         chromeOptions.addArguments("--headless");
+        chromeOptions.addArguments("--disable-dev-shm-usage");
+        chromeOptions.addArguments("--remote-allow-origins=*");
         chromeOptions.addArguments("--user-agent="+webdriverProperties.getUserAgent());
 
         return new ChromeDriver(chromeOptions);
